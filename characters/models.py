@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from char_classes.models import CharClass
 
 
 class Character(models.Model):
@@ -12,12 +13,9 @@ class Character(models.Model):
         # Weitere Rassen hier hinzufügen
     ]
 
-    # SETUP AS MODEL
-    CLASS_CHOICES = [("mage", "Mage")]
-
     name = models.CharField(max_length=25)
     race = models.CharField(max_length=50, choices=RACE_CHOICES)
-    char_class = models.CharField(max_length=50, choices=CLASS_CHOICES)
+    char_class = models.ForeignKey(CharClass, on_delete=models.SET_NULL, null=True)
 
     strength_value = models.IntegerField()
     agility_value = models.IntegerField()

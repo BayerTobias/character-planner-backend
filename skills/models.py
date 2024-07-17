@@ -7,4 +7,4 @@ class Skill(models.Model):
     char_class = models.ForeignKey(CharClass, on_delete=models.SET_NULL, null=True)
     description = models.CharField(max_length=100)
     firstLevelCost = models.IntegerField(default=1)
-    secondLevelCost = models.IntegerField(default=2, null=True)
+    secondLevelCost = models.IntegerField(null=True, blank=True)
