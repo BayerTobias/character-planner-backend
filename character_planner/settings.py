@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "users",
     "skills",
     "characters",
+    "char_classes",
 ]
 
 MIDDLEWARE = [
