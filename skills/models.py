@@ -4,7 +4,9 @@ from char_classes.models import CharClass
 
 class Skill(models.Model):
     name = models.CharField(max_length=20)
-    char_class = models.ForeignKey(CharClass, on_delete=models.SET_NULL, null=True)
+    char_class = models.ForeignKey(
+        CharClass, on_delete=models.SET_NULL, null=True, related_name="skills"
+    )
     description = models.CharField(max_length=100)
-    firstLevelCost = models.IntegerField(default=1)
-    secondLevelCost = models.IntegerField(null=True, blank=True)
+    first_level_cost = models.IntegerField(default=1)
+    second_level_cost = models.IntegerField(null=True, blank=True)
