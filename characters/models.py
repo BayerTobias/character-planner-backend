@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from char_classes.models import CharClass
 from char_races.models import CharRace
+from skills.models import Skill
 
 
 class Character(models.Model):
@@ -27,3 +28,12 @@ class Character(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CharacterSkill(models.Model):
+    character = models.ForeignKey(Character, on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
+    nodes_skilled = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.character.name} - {self.skill.name} (Level {self.nodes_skilled})"

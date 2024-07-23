@@ -10,3 +10,6 @@ class Skill(models.Model):
     description = models.CharField(max_length=100)
     first_level_cost = models.IntegerField(default=1)
     second_level_cost = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.char_class.name}"
