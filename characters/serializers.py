@@ -1,12 +1,20 @@
 from rest_framework import serializers
-from .models import Character
+from .models import Character, CharacterSkill
 from char_classes.serializers import CharClassDetailsSerializer
 from char_races.serializers import CharRaceSerializer
+
+
+class CharacterSkillSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CharacterSkill
+        fields = ("id", "skill", "nodes_skilled")
 
 
 class CharacterSerializer(serializers.ModelSerializer):
 
     char_class = CharClassDetailsSerializer(read_only=True)
+    char_skilled_skills = CharacterSkillSerializer(many=True, read_only=True)
     race = CharRaceSerializer(read_only=True)
 
     class Meta:

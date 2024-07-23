@@ -31,7 +31,9 @@ class Character(models.Model):
 
 
 class CharacterSkill(models.Model):
-    character = models.ForeignKey(Character, on_delete=models.CASCADE)
+    character = models.ForeignKey(
+        Character, on_delete=models.CASCADE, related_name="char_skilled_skills"
+    )
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
     nodes_skilled = models.IntegerField(default=1)
 
