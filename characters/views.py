@@ -10,7 +10,7 @@ class CharactersView(APIView):
 
     def get(self, request):
         # user_id = 1
-        character = get_object_or_404(Character, pk=1)
+        character = get_object_or_404(Character, pk=2)
         # queryset = Character.objects.filter(user_id=user_id)
         serializer = CharacterSerializer(character)
         return Response(serializer.data, status=status.HTTP_200_OK)
