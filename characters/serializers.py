@@ -22,3 +22,13 @@ class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Character
         fields = "__all__"
+
+
+class CharacterListSerializer(serializers.ModelSerializer):
+    race_name = serializers.CharField(source="race.name", read_only=True)
+    char_class_name = serializers.CharField(source="char_class.name", read_only=True)
+
+    # evtl nur ids und im frontend verbinden
+    class Meta:
+        model = Character
+        fields = ["id", "name", "race_name", "char_class_name"]
