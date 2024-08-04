@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.views import ObtainAuthToken, APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
@@ -15,6 +17,14 @@ class LoginView(ObtainAuthToken):
         token, created = Token.objects.get_or_create(user=user)
 
         return Response({"token": token.key}, status=status.HTTP_200_OK)
+
+
+class CheckAuth(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"message": "Authenticated"}, status=status.HTTP_200_OK)
 
 
 class Users(APIView):
