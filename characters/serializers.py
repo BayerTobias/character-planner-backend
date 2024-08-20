@@ -3,6 +3,7 @@ from .models import Character, CharacterSkill
 from char_classes.serializers import CharClassDetailsSerializer
 from char_races.serializers import CharRaceSerializer
 from skills.serializers import CustomSkillSerializer
+from items.serializers import BaseWeaponSerializer, CustomWeaponSerializer
 
 
 class CharacterSkillSerializer(serializers.ModelSerializer):
@@ -18,10 +19,17 @@ class CharacterSerializer(serializers.ModelSerializer):
     char_skilled_skills = CharacterSkillSerializer(many=True, read_only=True)
     custom_skills = CustomSkillSerializer(many=True, read_only=True)
     race = CharRaceSerializer(read_only=True)
+    base_weapons = BaseWeaponSerializer(many=True, read_only=True)
+    custom_weapons = serializers.SerializerMethodField()
 
     class Meta:
         model = Character
         fields = "__all__"
+
+    def get_custom_weapons(self, obj):
+
+        custom_weapons = obj.custom_weapons.all()
+        return CustomWeaponSerializer(custom_weapons, many=True).data
 
 
 class CharacterListSerializer(serializers.ModelSerializer):

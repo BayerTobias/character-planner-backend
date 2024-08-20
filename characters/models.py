@@ -23,7 +23,7 @@ class Character(models.Model):
     charisma_value = models.IntegerField()
     charisma_bonus = models.IntegerField()
 
-    weapons = models.ManyToManyField(BaseWeapon, related_name="characters")
+    base_weapons = models.ManyToManyField(BaseWeapon, related_name="characters")
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="characters"
