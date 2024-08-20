@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "characters",
     "char_classes",
     "char_races",
+    "items",
 ]
 
 MIDDLEWARE = [
