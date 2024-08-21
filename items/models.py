@@ -39,3 +39,14 @@ class CustomWeapon(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BaseArmor(models.Model):
+    name = models.CharField(max_length=50)
+    min_str = models.IntegerField(null=True, blank=True)
+    armor_bonus = models.IntegerField(null=True, blank=True)
+    maneuver_bonus = models.IntegerField(null=True, blank=True)
+    weight = models.DecimalField(max_digits=5, decimal_places=1, null=True, blank=True)
+
+    def __str__(self):
+        return self.name

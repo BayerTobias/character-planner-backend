@@ -3,7 +3,7 @@ from django.conf import settings
 from char_classes.models import CharClass
 from char_races.models import CharRace
 from skills.models import Skill
-from items.models import BaseWeapon
+from items.models import BaseWeapon, BaseArmor
 
 
 class Character(models.Model):
@@ -24,6 +24,9 @@ class Character(models.Model):
     charisma_bonus = models.IntegerField()
 
     base_weapons = models.ManyToManyField(BaseWeapon, related_name="characters")
+    armor = models.ForeignKey(
+        BaseArmor, null=True, blank=True, on_delete=models.SET_NULL
+    )
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="characters"

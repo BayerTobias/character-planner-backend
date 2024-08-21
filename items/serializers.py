@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import BaseWeapon, CustomWeapon, WeaponGroup
+from .models import BaseWeapon, CustomWeapon, WeaponGroup, BaseArmor
 
 
 class WeaponGroupSerializer(serializers.ModelSerializer):
@@ -22,4 +22,11 @@ class CustomWeaponSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomWeapon
+        fields = "__all__"
+
+
+class BaseArmorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BaseArmor
         fields = "__all__"
