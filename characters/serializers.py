@@ -7,6 +7,7 @@ from items.serializers import (
     BaseWeaponSerializer,
     CustomWeaponSerializer,
     BaseArmorSerializer,
+    MoneySerializer,
 )
 
 
@@ -26,6 +27,7 @@ class CharacterSerializer(serializers.ModelSerializer):
     base_weapons = BaseWeaponSerializer(many=True, read_only=True)
     custom_weapons = serializers.SerializerMethodField()
     armor = BaseArmorSerializer(read_only=True)
+    money = MoneySerializer(read_only=True)
 
     class Meta:
         model = Character

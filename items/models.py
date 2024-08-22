@@ -50,3 +50,14 @@ class BaseArmor(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Money(models.Model):
+    gf = models.IntegerField(default=0)
+    tt = models.IntegerField(default=0)
+    kl = models.IntegerField(default=0)
+    mu = models.IntegerField(default=0)
+
+    character = models.OneToOneField(
+        "characters.Character", on_delete=models.CASCADE, related_name="money"
+    )
