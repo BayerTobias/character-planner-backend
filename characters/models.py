@@ -12,7 +12,9 @@ class Character(models.Model):
     race = models.ForeignKey(CharRace, on_delete=models.SET_NULL, null=True)
     char_class = models.ForeignKey(CharClass, on_delete=models.SET_NULL, null=True)
 
+    max_hp = models.IntegerField(default=0)
     current_hp = models.IntegerField(default=0)
+    max_mana = models.IntegerField(null=True, blank=True)
     current_mana = models.IntegerField(null=True, blank=True)
 
     strength_value = models.IntegerField()
