@@ -9,7 +9,7 @@ class CharClassDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CharClass
-        fields = ["id", "name", "base_lvl_hp", "base_lvl_mana", "skills"]
+        fields = ["id", "name", "base_lvl_hp", "base_lvl_mana", "skills", "main_stat"]
 
 
 class CharClassSerializer(serializers.ModelSerializer):
