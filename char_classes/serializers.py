@@ -9,11 +9,19 @@ class CharClassDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CharClass
-        fields = ["id", "name", "base_lvl_hp", "base_lvl_mana", "skills", "main_stat"]
+        fields = [
+            "id",
+            "name",
+            "base_lvl_hp",
+            "base_lvl_mana",
+            "skills",
+            "main_stat",
+            "color",
+        ]
 
 
 class CharClassSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CharClass
-        fields = ["id", "name", "base_lvl_hp", "base_lvl_mana"]
+        fields = ["id", "name", "base_lvl_hp", "base_lvl_mana", "color"]

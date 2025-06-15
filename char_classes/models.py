@@ -16,6 +16,7 @@ class CharClass(models.Model):
     main_stat = models.CharField(
         max_length=20, choices=STAT_CHOICES, null=True, blank=True
     )
+    color = models.CharField(max_length=25)
 
     def __str__(self):
         return self.name
